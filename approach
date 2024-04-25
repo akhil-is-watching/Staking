@@ -1,0 +1,20 @@
+modifier updateReward
+
+  eT = block.timestamp - lastUpdateTime(user)
+  rewardRate  = calc_reward_rate()
+  rewards(user) += stakes[user] * elapsedTime * rewardRate / 1e18   /// Decimals
+  lastUpdateTime[user] = currentTimestamp;
+
+For every 10M  - 25%
+If rate < 25%; rate == 25%
+
+
+BLOCK    TVL     REWARD
+0        0       250
+10       10M     225
+20       20M     200
+
+USER A DEPOSITS  AT BLOCK 0
+USER A WITHDRAWS AT BLOCK 12
+
+REWARD(A) = stake * ( (10-0) * 250 + (12-10) * 225 )
